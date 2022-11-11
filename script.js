@@ -13,11 +13,11 @@ const bookList = [
     title: "Hamlet",
   },
 ];
-//const searchInput = document.children[0].children[1].children[1].children[1];
-const searchField = document.getElementById('searchField');
-//console.log(searchField);
 
-// keydown, keyup
+const searchField = document.getElementById('searchField');
+
+
+
 searchField.addEventListener('keyup', handleKeyPress);
 
 function handleKeyPress(input) {
@@ -45,29 +45,20 @@ function searchBooks(searchTerm) {
   renderBookList(filteredList);
 }
 
+
 function renderBookList(bookList) {
   /*Element i HTML-listan visas/döljs beroende på listans innehåll */
-  let html = `<ul class="book-list rounded-md border-2 border-blue-400 bg-white w-full mx-auto my-2">`
-  for(let i = 0; i < bookList.length; i++){
-    html +=`<li
-              class="book-list__item mb-2 mx-2 last:mb-0 p-3 text-indigo-900 last:border-b-0 border-b border-indigo-700 cursor-pointer"> 
-              ${bookList[i].author} - ${bookList[i].title}
-              </li>`;
-  }              
-  html +=`</ul>`
   const existingElement = document.querySelector(".book-list");
   const root = document.getElementById('root');
   if (existingElement){
-    root.removeChild(existingElement);
-    
+    root.removeChild(existingElement);   
   }
-  root.insertAdjacentHTML("beforeend", html)
-
-
-  //console.log(list);
+  if(bookList.length > 0){
+    root.insertAdjacentHTML("beforeend", BookList(bookList));
+  }
 }
 
 
 
-//handleKeyPress("e");
+
 
