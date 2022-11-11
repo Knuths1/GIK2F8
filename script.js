@@ -13,7 +13,12 @@ const bookList = [
     title: "Hamlet",
   },
 ];
-const searchInput = null;
+//const searchInput = document.children[0].children[1].children[1].children[1];
+const searchField = document.getElementById('searchField');
+console.log(searchField);
+
+// keydown, keyup
+searchField.addEventListener('keyup', handleKeyPress);
 
 function handleKeyPress(input) {
   /*Ta emot/läsa av värdet i inputfältet 
@@ -21,6 +26,7 @@ function handleKeyPress(input) {
     searchBooks returnerar en filtrerad lista
     Listan skickas till renderBookList
     */
+   searchBooks(input.target.value)
   searchBooks(input);
 }
 
@@ -47,5 +53,5 @@ function renderBookList(list) {
 
 
 
-handleKeyPress("e");
+//handleKeyPress("e");
 
