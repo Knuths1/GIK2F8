@@ -1,5 +1,4 @@
 "use strict";
-/* Vad ska vi göra här? */
 
 const bookList = [
   {
@@ -14,36 +13,26 @@ const bookList = [
   },
 ];
 
-const searchField = document.getElementById('searchField');
+//const searchField = document.getElementById('searchField');
+
+//searchField.addEventListener('keyup', (e) => searchBooks(e.target.value));
+searchField.addEventListener('keyup', (e) => 
+renderBookList(
+  bookList.filter(({ title, author }) => {
+    const searchTerm = e.target.value.toLowerCase();
+    return title.toLowerCase().indexOf(searchTerm) >= 0 || author.toLowerCase().indexOf(searchTerm) >= 0;
+  })
+)
+);
 
 
-
-searchField.addEventListener('keyup', handleKeyPress);
-
-function handleKeyPress(input) {
-  /*Ta emot/läsa av värdet i inputfältet 
-    Skicka detta värde till searchBooks
-    searchBooks returnerar en filtrerad lista
-    Listan skickas till renderBookList
-    */
-  searchBooks(input.target.value)
-}
-
-function searchBooks(searchTerm) {
-  /* Loopa igenom bookList
-    för varje varv i loopen, ta den aktuella boken
-    jämför titeln med söktermen
-    in Söktermen finn någonstans i titeln, lägg till boken i ny lista (filteredList)
-    */
-  let filteredList = [];
-  for (let i = 0; i < bookList.length; i++) {
-    const title = bookList[i].title.toLowerCase();
-    if (title.indexOf(searchTerm.toLowerCase()) >= 0) {
-      filteredList.push(bookList[i]);
-    }
-  }
-  renderBookList(filteredList);
-}
+// function searchBooks(searchTerm) {
+//   renderBookList(
+//   bookList.filter(({ title, author }) =>  
+//   (title.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0 ||
+//   author.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0))
+//   );
+// }
 
 
 function renderBookList(bookList) {
