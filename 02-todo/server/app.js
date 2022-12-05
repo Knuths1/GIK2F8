@@ -34,7 +34,7 @@ app.post("/tasks", async (req, res) => {
 
     const listBuffer = await fs.readFile("./tasks.json");
     const currentTasks = JSON.parse(listBuffer);
-    console.log(currentTasks);
+    //console.log(currentTasks);
     let maxTaskId = 1;
     if (currentTasks && currentTasks.length > 0) {
       maxTaskId = currentTasks.reduce(
